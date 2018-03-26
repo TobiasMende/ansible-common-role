@@ -1,0 +1,29 @@
+---
+- name: Checkout Dotfiles Repo
+  git:
+    repo: https://github.com/TobiasMende/dotfiles.git
+    dest: ~/.dotfiles
+    version: master
+    force: yes
+
+- name: Run Dotfiles Installation
+  shell: ~/.dotfiles/install.sh
+
+- name: Remove Dotfiles Backup
+  file:
+    path: ~/dotfiles_old
+    state: absent
+
+- name: Install Grc Extension
+  shell: ./install.sh /usr/local /usr/local
+  args:
+    chdir: "/home/{{ user }}/.dotfiles/grc"
+  become: true
+  become_user: root
+
+- name: Set Default Shell To Zsh
+  user:
+    name: "{{ user }}"
+    shell: /bin/zsh
+  become: true
+  become_user: root

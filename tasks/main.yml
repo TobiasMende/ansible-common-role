@@ -1,0 +1,11 @@
+---
+# tasks file for common
+- import_tasks: configure_basics.yml
+  tags: common_basics
+
+- import_tasks: default_dependencies.yml
+  tags: common_dependencies
+
+- import_tasks: install_dotfiles.yml
+  become_user: "{{ user }}"
+  tags: common_dotfiles

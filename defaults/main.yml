@@ -1,0 +1,17 @@
+---
+# defaults file for common
+hostname: server1
+ssh_identity_key: '~/.ssh/id_rsa.pub'
+sshd_config: '/etc/ssh/sshd_config'
+ssh_user: "{{ user }}"
+
+install_keys: false
+
+packages:
+  - vim
+  - zsh
+  - tmux
+  - htop
+  - git
+  - apt-transport-https
+  - tree
