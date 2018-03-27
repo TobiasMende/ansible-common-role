@@ -1,4 +1,9 @@
 ---
+- name: Install Prequisites
+  apt:
+    name: "dbus"
+    state: present
+
 - name: Set Hostname
   hostname:
     name: "{{ hostname }}"
